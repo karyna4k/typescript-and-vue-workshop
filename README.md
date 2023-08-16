@@ -1,48 +1,51 @@
-# TypeScript and Vue with Frontend Masters
+# toEat
 
-Watch the full course on the [Frontend Masters website](https://frontendmasters.com/courses/vue-typescript).
+This template should help get you started developing with Vue 3 in Vite.
 
-## Prerequisites
+## Recommended IDE Setup
 
-- [Git](https://git-scm.com/)
-- [Node LTS](https://nodejs.org/en/)
-- [Volar VS Code Extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-- [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Installation Instructions
+## Type Support for `.vue` Imports in TS
 
-> Note: Make sure to change directories into the `app` directory before running `npm install`.
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-```bash
-git clone https://github.com/bencodezen/typescript-and-vue-workshop.git
-cd typescript-and-vue-workshop/app
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
 npm install
 ```
 
-To run the application, use:
-```bash
+### Compile and Hot-Reload for Development
+
+```sh
 npm run dev
 ```
 
-## Course Errata
+### Type-Check, Compile and Minify for Production
 
-### Global State Management with Pinia
-During the Global State Management with Pinia lesson, the user interface is not reactive. If you delete a restaurant or dish, you need to change views in order to see the updated UI. Follow the steps below to create a reactive interface:
-
-In `RestaurantPage.vue`, import `storeToRefs` from Pinia:
-
-```javscript
-import { storeToRefs } from 'pinia'
+```sh
+npm run build
 ```
 
-Update the `restaurantList` array:
+### Lint with [ESLint](https://eslint.org/)
 
-```javascript
-const restaurantList = storeToRefs(restaurantStore).list
+```sh
+npm run lint
 ```
 
-In the `filteredRestaurantList` computed property, update the `filter` method:
-```javascript
-return restaurantList.value.filter((restaurant) => { ... })
-```
+## Photos
 
+- Home Page
+    - Photo by Andres Ayrton: https://www.pexels.com/photo/woman-showing-apple-and-bitten-doughnut-6551415/
